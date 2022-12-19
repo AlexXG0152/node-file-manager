@@ -59,7 +59,7 @@ rl.on("line", async (input) => {
         .catch((error) => console.error(error));
       break;
 
-    case input.startsWith("add "): ///////////////////////////////////////
+    case input.startsWith("add "):
       (await import("./fs/create.js"))
         .create(await getFilename(input))
         .catch((error) => console.error(error))
@@ -67,7 +67,6 @@ rl.on("line", async (input) => {
       break;
 
     case input.startsWith("rn "): {
-      ////////////////////////////////////////
       const [pathToFile, newFilename] = await getPathAndFilename(input);
       (await import("./fs/rename.js"))
         .renameF(pathToFile, newFilename)
@@ -93,7 +92,7 @@ rl.on("line", async (input) => {
       break;
     }
     case input.startsWith("rm "):
-      (await import("./fs/delete.js")) ////////////////////////////////
+      (await import("./fs/delete.js"))
         .remove(await getPath(input))
         .catch((error) => console.error(error))
         .then(() => currentFolderAnnouncerAndPrompt(process.cwd(), rl));
